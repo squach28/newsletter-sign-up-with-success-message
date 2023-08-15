@@ -1,13 +1,14 @@
 import heroImg from '../assets/images/illustration-sign-up-mobile.svg'
 import desktopImg from '../assets/images/illustration-sign-up-desktop.svg'
 import iconList from '../assets/images/icon-list.svg'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
+import { EmailContext } from '../context/EmailContext'
 
 const SignUpForm = ({ toggleCompleted }) => {
 
-    const [email, setEmail] = useState('')
     const [error, setError] = useState(false)
+    const { email, setEmail } = useContext(EmailContext)
   
     const handleEmailChange = (e) => {
       setEmail(e.target.value)
@@ -33,8 +34,8 @@ const SignUpForm = ({ toggleCompleted }) => {
     }
 
     return (
-        <div className="md:flex md:flex-row-reverse justify-center items-center bg-white md:p-3 rounded-md">
-        <img className="md:hidden" src={heroImg} alt="illustration sign up"/>
+        <div className="md:flex md:flex-row-reverse md:justify-center items-center bg-white md:p-3 rounded-md">
+        <img className="md:hidden w-full" src={heroImg} alt="illustration sign up"/>
         <img className="sm:hidden md:block" src={desktopImg} alt="illustration sign up"/>
         <div className="p-6 flex flex-col gap-5 md:p-6">
             <h1 className="text-4xl md:text-6xl font-bold">Stay updated!</h1>
@@ -72,7 +73,7 @@ const SignUpForm = ({ toggleCompleted }) => {
                 value={email}/>
             <button 
                 onClick={handleSubscribe} 
-                className="text-white bg-[#232742] w-full p-4 mt-4 rounded-md hover:text-white hover:bg-[#ff6257]">Subscribe to monthly newsletter</button>
+                className="text-white bg-[#232742] w-full p-4 mt-4 rounded-md hover:text-white hover:bg-[#ff6257] hover:shadow-md hover:shadow-[#ff6257]">Subscribe to monthly newsletter</button>
             </form>
         </div>
         </div>
